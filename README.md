@@ -1,2 +1,13 @@
 # Android-Architecture-Component
-Implement Android Component with Kotlin
+Implement Android components with Kotlin
+
+Submitted by: **Minh Nguyen**
+
+## Component
+- Lifecycle.
+
+- LiveData.
+
+- ViewModel
+
+- QR
