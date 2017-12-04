@@ -4,10 +4,10 @@ Implement Android components with Kotlin
 Submitted by: **Minh Nguyen**
 
 ## Component
-- Lifecycle.
+- Lifecycle
 
-- LiveData.
+- LiveData
 
 - ViewModel
 
-- QR
+- Barcode
