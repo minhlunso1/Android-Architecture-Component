@@ -56,32 +56,34 @@ object Util {
     }
 
     @Throws(WriterException::class)
-    fun encodeAsBitmap(context: Context, str: String): Bitmap? {
-        val result: BitMatrix
-        val width = 400
-        val height = width
-        val black = ContextCompat.getColor(context, R.color.black)
-        val white = ContextCompat.getColor(context, R.color.white)
+    fun encodeAsBitmap(context: Context, str: String): Deferred<Bitmap?> {
+        return async(CommonPool) {
+            var result: BitMatrix
+            val width = 400
+            val height = width
+            val black = ContextCompat.getColor(context, R.color.black)
+            val white = ContextCompat.getColor(context, R.color.white)
 
-        try {
-            result = MultiFormatWriter().encode(str,
-                    BarcodeFormat.QR_CODE, width, height, null)
-        } catch (iae: IllegalArgumentException) {
-            // Unsupported format
-            return null
-        }
-
-        val w = result.width
-        val h = result.height
-        val pixels = IntArray(w * h)
-        for (y in 0 until h) {
-            val offset = y * w
-            for (x in 0 until w) {
-                pixels[offset + x] = if (result.get(x, y)) black else white
+            try {
+                result = MultiFormatWriter().encode(str,
+                        BarcodeFormat.QR_CODE, width, height, null)
+            } catch (iae: IllegalArgumentException) {
+                // Unsupported format
+                return@async null
             }
+
+            val w = result.width
+            val h = result.height
+            val pixels = IntArray(w * h)
+            for (y in 0 until h) {
+                val offset = y * w
+                for (x in 0 until w) {
+                    pixels[offset + x] = if (result.get(x, y)) black else white
+                }
+            }
+            val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+            bitmap.setPixels(pixels, 0, width, 0, 0, w, h)
+            bitmap
         }
-        val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
-        bitmap.setPixels(pixels, 0, width, 0, 0, w, h)
-        return bitmap
     }
 }

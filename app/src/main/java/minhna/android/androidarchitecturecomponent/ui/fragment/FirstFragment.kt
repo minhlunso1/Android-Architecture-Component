@@ -58,7 +58,7 @@ class FirstFragment: Fragment() {
                 model.setAccount(Account(0, cardNumber.toLong()))
                 activity.supportFragmentManager.beginTransaction()
                         .replace(android.R.id.content, SecondFragment())
-                        .addToBackStack("SecondFragment")
+                        .addToBackStack(null)
                         .commit()
             }
         })
