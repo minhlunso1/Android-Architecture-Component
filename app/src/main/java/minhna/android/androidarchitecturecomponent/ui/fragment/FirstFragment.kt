@@ -14,6 +14,7 @@ import android.util.Log
 import minhna.android.androidarchitecturecomponent.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.fragment_first.*
 import minhna.android.androidarchitecturecomponent.model.Account
+import minhna.android.androidarchitecturecomponent.ui.activity.MainActivity
 
 
 /**
@@ -25,9 +26,11 @@ class FirstFragment: Fragment() {
     var root: View? = null
     lateinit var model: AccountViewModel
     val creditPartNumber = 4;
+    var mainActivity: MainActivity? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mainActivity = activity as MainActivity;
 
         model = ViewModelProviders.of(activity).get(AccountViewModel::class.java)
         model.getAccount().observe(activity, Observer { account ->
@@ -56,10 +59,7 @@ class FirstFragment: Fragment() {
 
 
                 model.setAccount(Account(0, cardNumber.toLong()))
-                activity.supportFragmentManager.beginTransaction()
-                        .replace(android.R.id.content, SecondFragment())
-                        .addToBackStack(null)
-                        .commit()
+                mainActivity?.changeFragment(SecondFragment())
             }
         })
 
