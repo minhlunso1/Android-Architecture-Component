@@ -42,7 +42,11 @@ class MainActivity : BaseActivity(), LogObserver.Callback, NavigationView.OnNavi
 
             override fun onDrawerOpened(v: View?) {
                 super.onDrawerOpened(v)
-                inputMethodManager.hideSoftInputFromWindow(getThis().currentFocus!!.windowToken, 0)
+                try {
+                    inputMethodManager.hideSoftInputFromWindow(getThis().currentFocus!!.windowToken, 0)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
         drawer_layout.addDrawerListener(toggle)
