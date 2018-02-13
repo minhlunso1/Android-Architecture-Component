@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="app/src/main/ic_kotlin_asset-web.png">
+</p>
+
 # Android-Architecture-Component
 Implement Android components with Kotlin
 
