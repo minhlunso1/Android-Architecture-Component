@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/drawer_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/example_1"
+            android:title="Example 1"
+            android:icon="@android:drawable/gallery_thumb"/>
+        <item
+            android:id="@+id/example_2"
+            android:title="Example 2"
+            android:icon="@android:drawable/gallery_thumb"/>
+
+        <item
+            android:id="@+id/drawer_submenu"
+            android:title="SubHeader with SelectedState">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_sub1_1"
+                        android:title="Menu_Sub1_1" />
+                    <item
+                        android:id="@+id/nav_sub1_2"
+                        android:title="Menu_Sub1_2" />
+                </group>
+            </menu>
+        </item>
+
+        <group android:id="@+id/drawer_subgroup">
+            <item
+                android:id="@+id/nav_subgroup_item"
+                android:title="Menu_Sub2_2 with no SelectedState" />
+        </group>
+    </group>
+
+</menu>
+
