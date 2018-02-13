@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="app/src/main/ic_kotlin_asset-web.png">
+  <img width="300" height="300" src="app/src/main/ic_kotlin_asset-web.png">
 </p>
 
 # Android-Architecture-Component
