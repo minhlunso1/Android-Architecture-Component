@@ -1,9 +1,7 @@
 package minhna.android.androidarchitecturecomponent.ui.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.view.GravityCompat
@@ -22,19 +20,8 @@ class MainActivity : BaseActivity(), LogObserver.Callback, NavigationView.OnNavi
 
     lateinit var logObserver: LogObserver;
 
-    override fun onResult(result: String) {
-        Toast.makeText(this,  result, Toast.LENGTH_SHORT).show();
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
-
-        logObserver = LogObserver(this.javaClass.simpleName, lifecycle, this)
-        lifecycle.addObserver(logObserver)
-
-        val toggle = object : ActionBarDrawerToggle(
+    private val toggle by lazy {
+        object : ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             override fun onDrawerClosed(v: View?) {
                 super.onDrawerClosed(v)
@@ -49,6 +36,20 @@ class MainActivity : BaseActivity(), LogObserver.Callback, NavigationView.OnNavi
                 }
             }
         }
+    }
+
+    override fun onResult(result: String) {
+        Toast.makeText(this,  result, Toast.LENGTH_SHORT).show();
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+
+        logObserver = LogObserver(this.javaClass.simpleName, lifecycle, this)
+        lifecycle.addObserver(logObserver)
+
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
