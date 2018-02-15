@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -42,6 +43,14 @@ class SecondFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_second, container, false);
+    }
+
+    override fun onResume() {
+        super.onResume()
+        //both observer on First and Second Fragment will execute
+//        Handler().postDelayed({
+//            model.setAccount(Account(0, 1234))
+//        }, 1000)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
