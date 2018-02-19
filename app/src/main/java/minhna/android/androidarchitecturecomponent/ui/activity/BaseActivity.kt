@@ -7,6 +7,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -21,6 +22,8 @@ open class BaseActivity: AppCompatActivity() {
         inputMethodManager = this.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     }
 
+    fun getThis() = this;
+
     inline fun consume(f: () -> Unit): Boolean {
         f()
         return true
@@ -33,7 +36,9 @@ open class BaseActivity: AppCompatActivity() {
         return true
     }
 
-    fun getThis() = this;
+    operator fun ViewGroup.get(pos: Int): View = getChildAt(pos)
+    //usage
+    //val view = viewGroup[2]
 
     //view.snack("Welcome", Snackbar.LENGTH_SHORT, {Toast.makeText(getThis(), "Snack", Toast.LENGTH_SHORT).show()})
     inline fun View.snack(message: String, length: Int = Snackbar.LENGTH_LONG, f: Snackbar.() -> Unit) {
