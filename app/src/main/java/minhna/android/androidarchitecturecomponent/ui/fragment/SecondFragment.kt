@@ -4,8 +4,6 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.os.Handler
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,12 +14,13 @@ import kotlinx.coroutines.experimental.launch
 import minhna.android.androidarchitecturecomponent.model.Account
 import minhna.android.androidarchitecturecomponent.util.UI
 import minhna.android.androidarchitecturecomponent.util.Util
+import minhna.android.androidarchitecturecomponent.util.inflate
 
 /**
  * Created by minhnguyen on 12/1/17.
  */
 
-class SecondFragment : Fragment() {
+class SecondFragment : BaseFragment() {
 
     lateinit var model: AccountViewModel
 
@@ -42,7 +41,7 @@ class SecondFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_second, container, false);
+        return container?.inflate(R.layout.fragment_second)
     }
 
     override fun onResume() {
