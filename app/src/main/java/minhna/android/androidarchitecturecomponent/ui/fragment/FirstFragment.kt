@@ -2,7 +2,6 @@ package minhna.android.androidarchitecturecomponent.ui.fragment
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,13 +14,13 @@ import minhna.android.androidarchitecturecomponent.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.fragment_first.*
 import minhna.android.androidarchitecturecomponent.model.Account
 import minhna.android.androidarchitecturecomponent.ui.activity.MainActivity
-
+import minhna.android.androidarchitecturecomponent.util.inflate
 
 /**
  * Created by minhnguyen on 12/1/17.
  */
 
-class FirstFragment: Fragment() {
+class FirstFragment: BaseFragment() {
 
     var root: View? = null
     lateinit var model: AccountViewModel
@@ -39,7 +38,7 @@ class FirstFragment: Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        root = inflater?.inflate(R.layout.fragment_first, container, false);
+        root = container?.inflate(R.layout.fragment_first)
         return root
     }
 
