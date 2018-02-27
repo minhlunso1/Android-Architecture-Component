@@ -13,7 +13,7 @@ data class Account(val id: Int, val cardNumber: Long) : Parcelable {
             source.readLong()
     )
 
-    override fun describeContents() = 0
+  override fun describeContents() = 0
 
     override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
         writeInt(id)
