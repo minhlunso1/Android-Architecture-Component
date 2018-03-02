@@ -7,6 +7,9 @@ import android.widget.ImageView
 /**
  * Created by minhnguyen on 3/2/18.
  */
+
+//This one is useful when use in StaggeredGridLayout. When remove the image in the item or on loading,
+// that item with no picture still remain in that position due to the ratio.
 class AspectRatioImageView(context: Context, attrs: AttributeSet? = null, aspectRatio: Float = 0.0f) : ImageView(context, attrs) {
     private var mAspectRatio: Float = 0.0f
 
