@@ -5,11 +5,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion target_sdk_version
     defaultConfig {
         applicationId "minhna.android.androidarchitecturecomponent"
-        minSdkVersion 19
-        targetSdkVersion 26
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -33,17 +33,20 @@ kotlin {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support:design:26.1.0'
-    implementation "android.arch.lifecycle:runtime:1.0.3"
-    annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
-    implementation "android.arch.lifecycle:extensions:1.0.0"
+    implementation "com.android.support:appcompat-v7:$build_tool_version"
+    implementation "com.android.support:design:$build_tool_version"
+    implementation "android.arch.lifecycle:runtime:$arch_lifecycle_version"
+    annotationProcessor "android.arch.lifecycle:compiler:$arch_lifecycle_version"
+    implementation "android.arch.lifecycle:extensions:$arch_lifecycle_version"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.19.3'
 
     implementation "com.google.zxing:core:3.3.0"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
