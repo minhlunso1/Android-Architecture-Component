@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import minhna.android.androidarchitecturecomponent.R
 import minhna.android.androidarchitecturecomponent.ui.fragment.FirstFragment
+import minhna.android.androidarchitecturecomponent.ui.fragment.MarketFragment
 import minhna.android.androidarchitecturecomponent.ui.observer.LogObserver
 
 class MainActivity : BaseActivity(), LogObserver.Callback, NavigationView.OnNavigationItemSelectedListener {
@@ -88,7 +89,7 @@ class MainActivity : BaseActivity(), LogObserver.Callback, NavigationView.OnNavi
 
     override fun onNavigationItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.example_1 -> drawer_layout.consume { changeFragment(FirstFragment(), true) }
-        R.id.example_2 -> drawer_layout.consume { changeFragment(FirstFragment(), true) }
+        R.id.example_2 -> drawer_layout.consume { changeFragment(MarketFragment(), true) }
         R.id.example_3 -> consume {
             Toast.makeText(this, resources.getText(R.string.not_avail), Toast.LENGTH_SHORT).show()
         }

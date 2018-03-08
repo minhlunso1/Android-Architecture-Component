@@ -23,12 +23,8 @@ class ManagerAPI {
         return Observable.create {
             subscriber ->
             val response = appApi.getCoinMarket().execute()
-            if (response.isSuccessful) {
-                val items = mutableListOf<CoinMarket>()
-                response.body()?.apply {
-                    items.add(CoinMarket(product_code, alias))
-                }
-                subscriber.onNext(items)
+            if (response.isSuccessful && response.body() != null) {
+                subscriber.onNext(response.body()!!)
             } else {
                 subscriber.onError(Throwable(response.message()))
             }

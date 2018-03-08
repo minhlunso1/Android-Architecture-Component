@@ -34,6 +34,8 @@ class ListCoinMarketViewModel: ViewModel() {
                         .subscribe({
                             items ->
                             data.value = items
+                        }, {
+                            e -> e.printStackTrace()
                         })
         )
         return data
