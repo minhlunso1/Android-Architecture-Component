@@ -16,5 +16,11 @@ Submitted by: **Minh Nguyen**
 
 - Barcode
 
+- Multiple Adapters
+
+- React RxAndroid
+
+- Retrofit
+
 ## Reference
 [Gradle Build Cache with Kotlin](https://blog.jetbrains.com/kotlin/2018/02/using-gradle-build-cache-with-kotlin/)

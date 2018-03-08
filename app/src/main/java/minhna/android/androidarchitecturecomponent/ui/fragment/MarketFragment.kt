@@ -1,7 +1,6 @@
 package minhna.android.androidarchitecturecomponent.ui.fragment
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -10,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_market.*
 import minhna.android.androidarchitecturecomponent.R
+import minhna.android.androidarchitecturecomponent.adapter.AppAdapter
 import minhna.android.androidarchitecturecomponent.util.inflate
-import minhna.android.androidarchitecturecomponent.util.toast
 import minhna.android.androidarchitecturecomponent.viewmodel.ListCoinMarketViewModel
 
 /**
@@ -38,7 +37,7 @@ class MarketFragment : BaseFragment() {
         viewModel.list?.observe(this, Observer {
             list ->
             list?.let {
-                context.toast(list.size.toString())
+                rv.adapter = AppAdapter(list)
             }
         })
     }
