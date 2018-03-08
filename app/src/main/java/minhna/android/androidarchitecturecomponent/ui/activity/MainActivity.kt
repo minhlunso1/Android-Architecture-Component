@@ -2,8 +2,6 @@ package minhna.android.androidarchitecturecomponent.ui.activity
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
@@ -66,36 +64,11 @@ class MainActivity : BaseActivity(), LogObserver.Callback, NavigationView.OnNavi
         changeFragment(FirstFragment(), true)
     }
 
-    fun changeFragment(f: Fragment, cleanStack: Boolean = false) {
-        val ft = supportFragmentManager.beginTransaction()
-        if (cleanStack)
-            clearBackStack()
-        ft.setCustomAnimations(
-                R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_popup_enter, R.anim.abc_popup_exit)
-        ft.replace(R.id.main_activity_container, f)
-        ft.addToBackStack(null)
-        ft.commit()
-    }
-
-    fun clearBackStack() {
-        val manager = supportFragmentManager
-        if (manager.backStackEntryCount > 0) {
-            val first = manager.getBackStackEntryAt(0)
-            manager.popBackStack(first.id, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-        }
-    }
-
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            val fragmentManager = supportFragmentManager
-            if (fragmentManager.backStackEntryCount > 1) {
-                fragmentManager.popBackStack()
-            } else {
-                finish()
-            }
-        }
+        } else
+            super.onBackPressed()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -115,7 +88,8 @@ class MainActivity : BaseActivity(), LogObserver.Callback, NavigationView.OnNavi
 
     override fun onNavigationItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.example_1 -> drawer_layout.consume { changeFragment(FirstFragment(), true) }
-        R.id.example_2 -> consume {
+        R.id.example_2 -> drawer_layout.consume { changeFragment(FirstFragment(), true) }
+        R.id.example_3 -> consume {
             Toast.makeText(this, resources.getText(R.string.not_avail), Toast.LENGTH_SHORT).show()
         }
         else -> super.onOptionsItemSelected(item)
