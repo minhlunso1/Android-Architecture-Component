@@ -9,11 +9,11 @@ import minhna.android.androidarchitecturecomponent.R
 import android.arch.lifecycle.ViewModelProviders
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import minhna.android.androidarchitecturecomponent.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.fragment_first.*
 import minhna.android.androidarchitecturecomponent.model.Account
 import minhna.android.androidarchitecturecomponent.ui.activity.MainActivity
+import minhna.android.androidarchitecturecomponent.util.Util
 import minhna.android.androidarchitecturecomponent.util.inflate
 
 /**
@@ -33,7 +33,8 @@ class FirstFragment: BaseFragment() {
 
         model = ViewModelProviders.of(activity).get(AccountViewModel::class.java)
         model.getAccount().observe(activity, Observer { account ->
-            Log.v(this.javaClass.simpleName, account?.cardNumber.toString())
+            Util.logFunction(this.javaClass.simpleName)
+            { Util.logExecution(this.javaClass.simpleName, account?.cardNumber.toString()) }
         })
     }
 

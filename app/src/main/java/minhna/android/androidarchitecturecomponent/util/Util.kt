@@ -3,6 +3,7 @@ package minhna.android.androidarchitecturecomponent.util
 import android.content.Context
 import android.graphics.Bitmap
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.common.BitMatrix
@@ -11,7 +12,6 @@ import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.async
 import minhna.android.androidarchitecturecomponent.R
-
 
 /**
  * Created by minhnguyen on 12/4/17.
@@ -86,4 +86,28 @@ object Util {
             bitmap
         }
     }
+
+    //Higher - Order function
+    /////////////////////////////////////////////////////////
+    fun logFunction(tag: String, func: () -> Int) {
+        Log.d(tag, "before executing function")
+        val valueReturn = func()
+        Log.d(tag, "Log return value: " + valueReturn)
+        Log.d(tag, "after executing function")
+    }
+
+    fun logFunction2(tag: String, func: (String) -> Unit) {
+        Log.d(tag, "before executing function")
+        func(tag)
+        Log.d(tag, "after executing function")
+    }
+    ////////////////////////////////////////////////////////
+
+    fun logExecution(tag: String, message: String?): Int {
+        message?.let {
+            return Log.v(tag, message)
+        }
+        return -1
+    }
+
 }
