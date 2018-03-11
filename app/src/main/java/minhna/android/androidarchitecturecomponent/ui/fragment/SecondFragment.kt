@@ -48,7 +48,8 @@ class SecondFragment : BaseFragment() {
         super.onResume()
         //both observer on First and Second Fragment will execute
 //        Handler().postDelayed({
-//            model.setAccount(Account(0, 1234))
+//            val account1 = Account(0, 1234)
+//            model.setAccount(account1.copy(cardNumber = 1111))
 //        }, 1000)
     }
 
