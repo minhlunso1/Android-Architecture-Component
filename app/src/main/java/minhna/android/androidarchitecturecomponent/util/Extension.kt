@@ -4,7 +4,6 @@ package minhna.android.androidarchitecturecomponent.util
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -42,11 +41,4 @@ fun Context.toast(message: CharSequence) = Toast.makeText(this, message, Toast.L
 fun Context.getDrawable(resId: Int): Drawable? = ContextCompat.getDrawable(this, resId)
 
 fun AppCompatActivity.getAppCompatDrawable(resId: Int): Drawable? = ContextCompat.getDrawable(this, resId)
-
-fun runAsync(func: () -> Unit) = Thread(Runnable { func() }).start()
-
-fun isLollipopOrAbove(func: () -> Unit) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-        func()
-}
 

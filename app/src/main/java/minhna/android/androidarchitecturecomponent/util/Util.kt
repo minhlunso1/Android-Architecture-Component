@@ -2,6 +2,7 @@ package minhna.android.androidarchitecturecomponent.util
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.os.Build
 import android.support.v4.content.ContextCompat
 import android.util.Log
 import com.google.zxing.BarcodeFormat
@@ -108,6 +109,13 @@ object Util {
             return Log.v(tag, message)
         }
         return -1
+    }
+
+    fun runAsync(func: () -> Unit) = Thread(Runnable { func() }).start()
+
+    fun isLollipopOrAbove(func: () -> Unit) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            func()
     }
 
 }
