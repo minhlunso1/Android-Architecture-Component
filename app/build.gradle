@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion target_sdk_version
     defaultConfig {
@@ -36,7 +38,7 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$build_tool_version"
     implementation "com.android.support:design:$build_tool_version"
     implementation "android.arch.lifecycle:runtime:$arch_lifecycle_version"
-    annotationProcessor "android.arch.lifecycle:compiler:$arch_lifecycle_version"
+    kapt "android.arch.lifecycle:compiler:$arch_lifecycle_version"
     implementation "android.arch.lifecycle:extensions:$arch_lifecycle_version"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
