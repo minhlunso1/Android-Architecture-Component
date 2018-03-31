@@ -8,12 +8,14 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.view.inputmethod.InputMethodManager
 import minhna.android.androidarchitecturecomponent.R
+import minhna.android.androidarchitecturecomponent.util.LogClickAble
 
 /**
  * Created by minhnguyen on 2/13/18.
  */
 open class BaseActivity: AppCompatActivity() {
     lateinit var inputMethodManager: InputMethodManager
+    val logClickAble by lazy {LogClickAble()}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
