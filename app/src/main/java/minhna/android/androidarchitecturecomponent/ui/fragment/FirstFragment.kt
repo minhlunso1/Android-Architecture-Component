@@ -59,7 +59,7 @@ class FirstFragment: BaseFragment() {
 
 
                 model.setAccount(Account(0, cardNumber.toLong()))
-                mainActivity?.changeFragment(SecondFragment()
+                mainActivity?.changeFragment(SecondFragment())
             }
         })
 
