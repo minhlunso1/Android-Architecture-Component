@@ -22,5 +22,7 @@ Submitted by: **Minh Nguyen**
 
 - Retrofit
 
+- Android KTX
+
 ## Reference
 [Gradle Build Cache with Kotlin](https://blog.jetbrains.com/kotlin/2018/02/using-gradle-build-cache-with-kotlin/)
