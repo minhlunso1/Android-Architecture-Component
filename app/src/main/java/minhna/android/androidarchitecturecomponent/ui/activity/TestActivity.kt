@@ -5,7 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
+import android.widget.RelativeLayout
 import androidx.time.*
 import androidx.view.*
 import java.time.Duration
@@ -46,6 +46,7 @@ class TestActivity: BaseActivity() {
     }
 
     private fun testView() {
+        Log.d(TAG, object : Any() {}.javaClass.getEnclosingMethod().getName())
         var view = View(this)
 
         view.postDelayed(delayInMillis = 200) {
@@ -60,5 +61,10 @@ class TestActivity: BaseActivity() {
         view.updatePaddingRelative(start = 16, end = 16, top = 16, bottom = 16)//Padding relative supports bot LTR & RTL
 
         //val bitmap = view.toBitmap(config = bitmapConfig)
+
+        val params = RelativeLayout.LayoutParams(100, 100)
+        params.setMargins(16)
+        params.updateMargins(left = 16, right = 16, top = 16, bottom = 16)
+        params.updateMarginsRelative(start = 16, end = 16, top = 16, bottom = 16)
     }
 }
