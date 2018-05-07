@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import minhna.android.androidarchitecturecomponent.R
 import minhna.android.androidarchitecturecomponent.model.CoinMarket
+import androidx.view.*
 
 /**
  * Created by minhnguyen on 3/8/18.
@@ -25,6 +26,17 @@ class AppAdapter(var list: List<ViewType>) : RecyclerView.Adapter<RecyclerView.V
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+//        val view = parent[0]
+//        val doesContain = parent.contains(view)
+//        parent.forEach {  }
+//        parent.forEachIndexed { index, childView -> }
+//        parent.isEmpty()
+//        parent.isNotEmpty()
+//        parent.size
+//        // Remove a view from the given viewgroup
+//        parent -= view
+//        parent += view
+
         return delegateAdapters.get(viewType).onCreateViewHolder(parent)
     }
 
