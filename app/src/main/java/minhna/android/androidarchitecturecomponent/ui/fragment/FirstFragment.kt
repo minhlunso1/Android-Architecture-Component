@@ -33,7 +33,7 @@ class FirstFragment: BaseFragment() {
 
         model = ViewModelProviders.of(activity).get(AccountViewModel::class.java)
         model.getAccount().observe(activity, Observer { account ->
-            Util.logFunction(this.javaClass.simpleName)
+            Util.logFunction(context.packageName + ":" + this.javaClass.simpleName)
             { Util.logExecution(this.javaClass.simpleName, account?.cardNumber.toString()) }
         })
     }

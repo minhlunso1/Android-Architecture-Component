@@ -95,7 +95,4 @@ class MainActivity : BaseActivity(), LogObserver.Callback, NavigationView.OnNavi
         }
         else -> super.onOptionsItemSelected(item)
     }
-
-
-
 }

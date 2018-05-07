@@ -20,6 +20,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "d1", "d2"
+    productFlavors {
+        flavor1 {
+            dimension "d1"
+            applicationIdSuffix ".suffix1"
+        }
+        flavor2 {
+            dimension "d1"
+            applicationIdSuffix ".suffix2"
+        }
+        dev {
+            dimension "d2"
+        }
+    }
 }
 androidExtensions {
     experimental = true
