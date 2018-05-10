@@ -29,7 +29,7 @@ class SecondFragment : BaseFragment() {
             tv_card_number.text = account.getFormatCardNumber()
 
             launch (UI) {
-                val bm: Bitmap? = Util.encodeAsBitmap(activity, account.cardNumber.toString()).await()
+                val bm: Bitmap? = Util.encodeAsBitmap(activity!!.applicationContext, account.cardNumber.toString()).await()
                 img_qr.visibility = View.VISIBLE
                 img_qr.setImageBitmap(bm)
             }
@@ -40,7 +40,7 @@ class SecondFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return container?.inflate(R.layout.fragment_second)
     }
 
@@ -55,8 +55,10 @@ class SecondFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        model = ViewModelProviders.of(activity).get(AccountViewModel::class.java)
-        model.getAccount().observe(activity, observerAccount)
+        activity?.let {
+            model = ViewModelProviders.of(it).get(AccountViewModel::class.java)
+            model.getAccount().observe(it, observerAccount)
+        }
     }
 
     override fun onDestroy() {

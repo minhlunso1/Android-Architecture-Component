@@ -22,11 +22,11 @@ class MainActivity : BaseActivity(), LogObserver.Callback, NavigationView.OnNavi
     private val toggle by lazy {
         object : ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
-            override fun onDrawerClosed(v: View?) {
+            override fun onDrawerClosed(v: View) {
                 super.onDrawerClosed(v)
             }
 
-            override fun onDrawerOpened(v: View?) {
+            override fun onDrawerOpened(v: View) {
                 super.onDrawerOpened(v)
                 try {
                     inputMethodManager.hideSoftInputFromWindow(getThis().currentFocus!!.windowToken, 0)

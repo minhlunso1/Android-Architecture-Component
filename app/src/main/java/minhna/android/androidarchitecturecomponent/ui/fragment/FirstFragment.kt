@@ -31,14 +31,14 @@ class FirstFragment: BaseFragment() {
         super.onCreate(savedInstanceState)
         mainActivity = activity as MainActivity;
 
-        model = ViewModelProviders.of(activity).get(AccountViewModel::class.java)
-        model.getAccount().observe(activity, Observer { account ->
-            Util.logFunction(context.packageName + ":" + this.javaClass.simpleName)
+        model = ViewModelProviders.of(activity as MainActivity).get(AccountViewModel::class.java)
+        model.getAccount().observe(activity as MainActivity, Observer { account ->
+            Util.logFunction(context?.packageName + ":" + this.javaClass.simpleName)
             { Util.logExecution(this.javaClass.simpleName, account?.cardNumber.toString()) }
         })
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         root = container?.inflate(R.layout.fragment_first)
         return root
     }

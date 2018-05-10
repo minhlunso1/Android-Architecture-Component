@@ -24,5 +24,7 @@ Submitted by: **Minh Nguyen**
 
 - Android KTX
 
+- Flavor Dimension
+
 ## Reference
 [Gradle Build Cache with Kotlin](https://blog.jetbrains.com/kotlin/2018/02/using-gradle-build-cache-with-kotlin/)

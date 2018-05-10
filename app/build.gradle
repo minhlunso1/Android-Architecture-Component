@@ -33,6 +33,9 @@ android {
             dimension "d1"
             applicationIdSuffix ".suffix2"
         }
+        origin {
+            dimension "d1"
+        }
         dev {
             dimension "d2"
         }
