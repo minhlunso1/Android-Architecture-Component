@@ -25,6 +25,7 @@ android {
 
     flavorDimensions "d1", "d2"
     productFlavors {
+        def author = "Minh"
         flavor1 {
             dimension "d1"
             applicationIdSuffix ".suffix1"
@@ -38,6 +39,7 @@ android {
         }
         dev {
             dimension "d2"
+            resValue "string", "author", author
         }
     }
 }
