@@ -30,7 +30,7 @@ data class Account(val id: Int, val cardNumber: Long) : Parcelable {
 
     fun getFormatCardNumber(): String {
         val cardString : String = cardNumber.toString()
-        var returnString: String = ""
+        var returnString = ""
         var flag = 0
         for (i in 0..cardString.length - 1) {
             returnString += cardString.get(i)
