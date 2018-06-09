@@ -7,9 +7,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_second.*
 import minhna.android.androidarchitecturecomponent.R
 import minhna.android.androidarchitecturecomponent.viewmodel.AccountViewModel
-import kotlinx.android.synthetic.main.fragment_second.*
 import kotlinx.coroutines.experimental.launch
 import minhna.android.androidarchitecturecomponent.model.Account
 import minhna.android.androidarchitecturecomponent.util.UI

@@ -9,8 +9,8 @@ import minhna.android.androidarchitecturecomponent.R
 import android.arch.lifecycle.ViewModelProviders
 import android.text.Editable
 import android.text.TextWatcher
-import minhna.android.androidarchitecturecomponent.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.fragment_first.*
+import minhna.android.androidarchitecturecomponent.viewmodel.AccountViewModel
 import minhna.android.androidarchitecturecomponent.model.Account
 import minhna.android.androidarchitecturecomponent.ui.activity.MainActivity
 import minhna.android.androidarchitecturecomponent.util.Util
@@ -24,12 +24,12 @@ class FirstFragment: BaseFragment() {
 
     var root: View? = null
     lateinit var model: AccountViewModel
-    val creditPartNumber = 4;
+    val creditPartNumber = 4
     var mainActivity: MainActivity? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainActivity = activity as MainActivity;
+        mainActivity = activity as MainActivity
 
         model = ViewModelProviders.of(activity as MainActivity).get(AccountViewModel::class.java)
         model.getAccount().observe(activity as MainActivity, Observer { account ->

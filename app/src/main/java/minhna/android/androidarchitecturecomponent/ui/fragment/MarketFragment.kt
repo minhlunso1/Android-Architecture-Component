@@ -11,18 +11,17 @@ import kotlinx.android.synthetic.main.fragment_market.*
 import minhna.android.androidarchitecturecomponent.R
 import minhna.android.androidarchitecturecomponent.adapter.AppAdapter
 import minhna.android.androidarchitecturecomponent.util.inflate
-import minhna.android.androidarchitecturecomponent.viewmodel.ListCoinMarketViewModel
+import minhna.android.androidarchitecturecomponent.viewmodel.ListCoinMarketRxViewModel
 
 /**
  * Created by minhnguyen on 3/8/18.
  */
-class MarketFragment : BaseFragment() {
-    lateinit var viewModel: ListCoinMarketViewModel
+class MarketFragment : SingleVMBaseFragment<ListCoinMarketRxViewModel>() {
+    override fun createViewModel(): ListCoinMarketRxViewModel = ViewModelProviders.of(this).get(ListCoinMarketRxViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ListCoinMarketViewModel::class.java)
-        viewModel.init()
+        vm?.init()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -34,16 +33,11 @@ class MarketFragment : BaseFragment() {
         rv.layoutManager = LinearLayoutManager(context)
         rv.setHasFixedSize(true)
 
-        viewModel.list?.observe(this, Observer {
+        vm?.list?.observe(this, Observer {
             list ->
             list?.let {
                 rv.adapter = AppAdapter(list)
             }
         })
-    }
-
-    override fun onStop() {
-        super.onStop()
-        viewModel.unSubscribe()
     }
 }

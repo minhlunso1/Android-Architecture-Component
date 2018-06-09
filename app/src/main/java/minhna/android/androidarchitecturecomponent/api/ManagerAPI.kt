@@ -19,7 +19,7 @@ class ManagerAPI {
         appApi = retrofit.create(AppAPI::class.java)
     }
 
-    fun getCoinMarket(): Observable<List<CoinMarket>> {
+    fun getCoinMarket(): Observable<Any> {
         return Observable.create {
             subscriber ->
             val response = appApi.getCoinMarket().execute()
