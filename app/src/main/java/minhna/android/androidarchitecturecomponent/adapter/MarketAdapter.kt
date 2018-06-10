@@ -23,7 +23,7 @@ class MarketAdapter: DelegateAdapter {
             parent.inflate(R.layout.item_market)) {
 
         fun bind(item: CoinMarket) = with(itemView) {
-            val text = "Market: " + item.product_code + " - alias: " + item.alias
+            val text = "Market: " + item.productCode + " - alias: " + item.alias
             tvMarket.text = text
         }
     }

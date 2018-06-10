@@ -23,7 +23,7 @@ class MarketNoAliasAdapter : DelegateAdapter {
             parent.inflate(R.layout.item_market_no_alias)) {
 
         fun bind(item: CoinMarket) = with(itemView) {
-            val text = "Market: " + item.product_code
+            val text = "Market: " + item.productCode
             tvMarket.text = text
         }
     }
