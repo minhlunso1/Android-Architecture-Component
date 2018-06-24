@@ -28,3 +28,5 @@ Submitted by: **Minh Nguyen**
 
 ## Reference
 [Gradle Build Cache with Kotlin](https://blog.jetbrains.com/kotlin/2018/02/using-gradle-build-cache-with-kotlin/)
+
+[Go to Source from Logcat Output](https://github.com/minhlunso1/Android-Architecture-Component/blob/master/app/src/main/java/minhna/android/androidarchitecturecomponent/util/LogClickAble.kt)

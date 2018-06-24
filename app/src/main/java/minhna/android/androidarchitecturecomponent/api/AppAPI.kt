@@ -10,6 +10,6 @@ import retrofit2.http.GET
 interface AppAPI {
 
     @GET(UrlAPI.marketAPI)
-    fun getCoinMarket(): Call<List<CoinMarket>>;
+    fun getCoinMarket(): Call<List<CoinMarket>>
 
 }
