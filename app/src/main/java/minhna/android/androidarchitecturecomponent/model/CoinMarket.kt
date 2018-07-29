@@ -10,6 +10,7 @@ import minhna.android.androidarchitecturecomponent.adapter.ViewType
 data class CoinMarket(@Json(name = "product_code") val productCode: String,
                       val alias: String): ViewType {
     constructor(): this(productCode = "", alias = "")//include this to avoid nullability
+    constructor(pCode: String): this(productCode = pCode, alias = "")
 
     override fun getViewType(): Int {
         return if (alias.isEmpty())
