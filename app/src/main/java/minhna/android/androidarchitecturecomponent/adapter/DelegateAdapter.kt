@@ -8,7 +8,7 @@ import android.view.ViewGroup
  */
 interface DelegateAdapter {
 
-    fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder
+    fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder
 
     fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: ViewType)
 }

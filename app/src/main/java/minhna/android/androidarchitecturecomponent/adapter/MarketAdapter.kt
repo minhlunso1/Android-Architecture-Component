@@ -12,18 +12,20 @@ import minhna.android.androidarchitecturecomponent.util.inflate
  */
 class MarketAdapter: DelegateAdapter {
 
-    override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder = MarketViewHolder(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
+            MarketViewHolder(parent, viewType)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: ViewType) {
         holder as MarketViewHolder
         holder.bind(item as CoinMarket)
     }
 
-    class MarketViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
-            parent.inflate(R.layout.item_market)) {
+    class MarketViewHolder(parent: ViewGroup, val viewType: Int) : RecyclerView.ViewHolder(
+            parent.inflate(viewType)) {
 
         fun bind(item: CoinMarket) = with(itemView) {
-            val text = "Market: " + item.productCode + " - alias: " + item.alias
+            var text = "Market: " + item.productCode
+            if (viewType == R.layout.item_market) text += " - alias: " + item.alias
             tvMarket.text = text
         }
     }

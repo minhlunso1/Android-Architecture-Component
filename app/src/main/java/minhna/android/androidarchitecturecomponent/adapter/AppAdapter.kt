@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import minhna.android.androidarchitecturecomponent.R
 import minhna.android.androidarchitecturecomponent.model.CoinMarket
-import androidx.view.*
 
 /**
  * Created by minhnguyen on 3/8/18.
@@ -18,7 +17,7 @@ class AppAdapter(var list: List<ViewType>) : RecyclerView.Adapter<RecyclerView.V
     init {
         this.items = list
         delegateAdapters.put(R.layout.item_market, MarketAdapter())
-        delegateAdapters.put(R.layout.item_market_no_alias, MarketNoAliasAdapter())
+        delegateAdapters.put(R.layout.item_market_no_alias, MarketAdapter())
     }
 
     override fun getItemCount(): Int {
@@ -37,7 +36,7 @@ class AppAdapter(var list: List<ViewType>) : RecyclerView.Adapter<RecyclerView.V
 //        parent -= view
 //        parent += view
 
-        return delegateAdapters.get(viewType).onCreateViewHolder(parent)
+        return delegateAdapters.get(viewType).onCreateViewHolder(parent, viewType)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
